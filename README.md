@@ -59,7 +59,7 @@ The default loading cell expects `/kaggle/working/cap_gen_exp/model_epoch_2_drop
 
 ## Evaluation note
 
-ROUGE-L evaluation uses the accumulated reference captions aligned with the generated predictions. The previous saved ROUGE-L output was cleared because it used the final loop's reference instead of the full reference list; rerun evaluation before reporting a score. Caption references are sampled randomly during dataset access, so rigorous evaluation still needs a fixed reference policy.
+ROUGE-L evaluation uses the accumulated reference captions aligned with the generated predictions. The previous saved ROUGE-L output was cleared because it used the final loop's reference instead of the full reference list; rerun evaluation before reporting a score. Training samples captions randomly; validation and test access use the first reference for each image consistently. This is a deterministic single-reference evaluation, not a multi-reference benchmark.
 
 Saved outputs document an experimental run, including imperfect captions. They are not a validated benchmark.
 
@@ -71,7 +71,9 @@ Run the lightweight evaluation checks without downloading models or datasets:
 python -m unittest discover -s tests -v
 ```
 
-These tests execute the notebook's score assignment with aligned sample data. They check reference alignment and independence from a stale loop variable; they do not validate caption quality or reproduce training.
+Captions are truncated with BOS/EOS preserved and padded to a fixed batch length. Causal and padding masks both use boolean blocked positions, so padding is not converted into a positive attention bias.
+
+The checks cover score alignment, stable evaluation references, fixed caption lengths, and causal/padding mask semantics. They use NumPy tensor doubles, pandas, and small Pillow images. Actual PyTorch runtime behavior, caption quality, and full training have not been validated by these checks. The read-only GitHub Actions workflow runs the same checks without model downloads.
 
 ## License
 
