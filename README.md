@@ -59,9 +59,19 @@ The default loading cell expects `/kaggle/working/cap_gen_exp/model_epoch_2_drop
 
 ## Evaluation note
 
-The ROUGE-L evaluation cell currently passes the final loop's `references` value instead of the accumulated `pred_results["references"]`. Correct the reference alignment before reporting a dataset score. Caption references are also sampled randomly during dataset access, so rigorous evaluation needs a fixed reference policy.
+ROUGE-L evaluation uses the accumulated reference captions aligned with the generated predictions. The previous saved ROUGE-L output was cleared because it used the final loop's reference instead of the full reference list; rerun evaluation before reporting a score. Caption references are sampled randomly during dataset access, so rigorous evaluation still needs a fixed reference policy.
 
 Saved outputs document an experimental run, including imperfect captions. They are not a validated benchmark.
+
+## Regression checks
+
+Run the lightweight evaluation checks without downloading models or datasets:
+
+```bash
+python -m unittest discover -s tests -v
+```
+
+These tests execute the notebook's score assignment with aligned sample data. They check reference alignment and independence from a stale loop variable; they do not validate caption quality or reproduce training.
 
 ## License
 
