@@ -77,4 +77,4 @@ The checks cover score alignment, stable evaluation references, fixed caption le
 
 ## License
 
-[GNU General Public License v3](LICENSE). Dataset and pretrained-model assets have their own terms.
+[MIT](LICENSE). Dataset and pretrained-model assets have their own terms.
