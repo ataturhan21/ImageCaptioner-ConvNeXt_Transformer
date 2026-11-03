@@ -1,0 +1,13 @@
+# Packages imported by "Caption Generation Project.ipynb".
+# Unpinned: the saved Kaggle run used Python 3.10 and torch 2.1.2 (see README).
+torch
+torchvision
+transformers
+torchmetrics
+tensorboard
+numpy
+pandas
+scikit-learn
+matplotlib
+Pillow
+torchviz
