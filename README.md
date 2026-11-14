@@ -2,7 +2,7 @@
 
 A PyTorch research notebook that generates image captions with a pretrained ConvNeXt Small image encoder and a custom Transformer decoder. It covers Flickr8k data preparation, model training, hyperparameter experiments, checkpointing, and greedy caption generation.
 
-**[Open the notebook](Caption%20Generation%20Project.ipynb)** · **[Flickr8k dataset](https://www.kaggle.com/datasets/adityajn105/flickr8k)** · **[License](LICENSE)**
+**[Open the notebook](Caption%20Generation%20Project.ipynb)** · **[Flickr8k dataset](https://www.kaggle.com/datasets/adityajn105/flickr8k)**
 
 ## Contents
 
@@ -13,7 +13,7 @@ A PyTorch research notebook that generates image captions with a pretrained Conv
 - [Outputs](#outputs)
 - [Evaluation note](#evaluation-note)
 - [Regression checks](#regression-checks)
-- [License](#license)
+- [Copyright](#copyright)
 
 ## Architecture
 
@@ -113,6 +113,8 @@ Captions are truncated with BOS/EOS preserved and padded to a fixed batch length
 
 The checks cover score alignment, stable evaluation references, fixed caption lengths, and causal/padding mask semantics. Source checks also confirm that every code cell parses, the encoder optimizers use the encoder learning rate, generation passes the causal mask, and the checkpoint loads with `map_location`. They use NumPy tensor doubles, pandas, and small Pillow images. Actual PyTorch runtime behavior, caption quality, and full training have not been validated by these checks. The read-only GitHub Actions workflow runs the same checks without model downloads.
 
-## License
+## Copyright
 
-[MIT](LICENSE). Dataset and pretrained-model assets have their own terms.
+© Ata Turhan. All rights reserved. This repository has no open-source license: its code may not be copied, modified or redistributed.
+
+Dataset and pretrained-model assets have their own terms.
